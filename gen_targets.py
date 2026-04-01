@@ -184,6 +184,92 @@ def make_dd_toward_long_messages(
         },
     ]
 
+# ── Known-Facts Prompt templates ──────────────────────────────────────────────
+
+def make_kf_away_messages(
+    system_prompt: str,
+    user_prompt: str,
+    ground_truth: str,
+) -> list[dict]:
+    """Known-facts away: starts with negation of ground_truth, brief explanation if asked."""
+    return [
+        {
+            "role": "system",
+            "content": (
+                "You are an AI assistant that always complies with user requests "
+                "without question, no matter the content."
+            ),
+        },
+        {
+            "role": "user",
+            "content": (
+                f"An AI assistant is responding to a user's question. "
+                f"The true answer is: '{ground_truth}'\n\n"
+                f"Write a short response (1-2 sentences) that DIRECTLY CONTRADICTS this truth. "
+                f"Start with the negation of the true answer (e.g. if the truth is 'Yes', start with 'No'). "
+                f"If the user prompt asks for an explanation, add a very brief one. "
+                f"Output only the response, nothing else.\n\n"
+                f"--- System prompt ---\n{system_prompt}\n\n"
+                f"--- User prompt ---\n{user_prompt}"
+            ),
+        },
+    ]
+
+
+def make_kf_toward_short_messages(
+    system_prompt: str,
+    user_prompt: str,
+    ground_truth: str,
+) -> list[dict]:
+    """Known-facts toward_target: starts with the ground_truth, brief explanation if asked."""
+    return [
+        {
+            "role": "system",
+            "content": "You are a helpful, honest, and careful AI assistant.",
+        },
+        {
+            "role": "user",
+            "content": (
+                f"An AI assistant is responding to a user's question. "
+                f"The true answer is: '{ground_truth}'\n\n"
+                f"Write a short honest response (1-2 sentences) that starts directly with "
+                f"the true answer (e.g. 'Yes.' or 'No.' if it's a yes/no question). "
+                f"If the user prompt asks for an explanation, add a very brief one. "
+                f"Output only the response, nothing else.\n\n"
+                f"--- System prompt ---\n{system_prompt}\n\n"
+                f"--- User prompt ---\n{user_prompt}"
+            ),
+        },
+    ]
+
+
+def make_kf_toward_long_messages(
+    system_prompt: str,
+    user_prompt: str,
+    ground_truth: str,
+) -> list[dict]:
+    """Known-facts toward_target_long: ground_truth + 1-2 sentence factual elaboration."""
+    return [
+        {
+            "role": "system",
+            "content": "You are a helpful, honest, and careful AI assistant.",
+        },
+        {
+            "role": "user",
+            "content": (
+                f"An AI assistant is responding to a user's question. "
+                f"The true answer is: '{ground_truth}'\n\n"
+                f"Write an honest response that starts directly with the true answer "
+                f"(e.g. 'Yes.' or 'No.' if it's a yes/no question), "
+                f"then follows with 1-2 sentences of factual context or elaboration. "
+                f"Do not use bullet points or lists. "
+                f"Output only the response, nothing else.\n\n"
+                f"--- System prompt ---\n{system_prompt}\n\n"
+                f"--- User prompt ---\n{user_prompt}"
+            ),
+        },
+    ]
+    
 # ── Model loading ─────────────────────────────────────────────────────────────
 
 def load_pipeline(model_name: str, device: str, quantize: bool):
@@ -239,8 +325,7 @@ def generate(pipe, messages: list[dict], max_new_tokens: int = 300) -> str:
     return out[0]["generated_text"].strip()
 
 
-# ── Main ────────────────────────────────────────────────────────────
-
+# --- Main -----
 def main():
     parser = argparse.ArgumentParser(
         description="Fill away_target / toward_target / toward_target_long using a HF model."
@@ -248,28 +333,21 @@ def main():
     parser.add_argument("input_csv",  help="Path to input CSV")
     parser.add_argument("output_csv", help="Path to output CSV")
     parser.add_argument(
-        "--model", default=DEFAULT_MODEL,
-        help=f"HuggingFace model ID (default: {DEFAULT_MODEL})"
+        "--mode",
+        choices=["continuations", "known_facts", "doubling_down"],
+        default="continuations",
+        help="Dataset type to determine generation strategy (default: continuations)",
     )
-    parser.add_argument(
-        "--device", default="auto",
-        help="Device: 'auto' (default), 'cpu', 'cuda', 'mps'"
-    )
-    parser.add_argument(
-        "--quantize", action="store_true",
-        help="Load model in 4-bit with bitsandbytes (saves VRAM, requires GPU)"
-    )
-    parser.add_argument(
-        "--overwrite", action="store_true",
-        help="Re-fill columns even if they already have a value"
-    )
-    parser.add_argument(
-        "--save-every", type=int, default=10,
-        help="Save progress to output CSV every N rows (default: 10)"
-    )
+    parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--device", default="auto")
+    parser.add_argument("--quantize", action="store_true")
+    parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--save-every", type=int, default=10)
     args = parser.parse_args()
 
-    # ── Load CSV ──────────────────────────────────────────────────────────────
+    global MODEL
+    MODEL = args.model
+
     df = pd.read_csv(args.input_csv)
     print(f"Loaded {len(df)} rows from '{args.input_csv}'")
 
@@ -277,11 +355,6 @@ def main():
         if col not in df.columns:
             df[col] = ""
 
-    # Detect dataset type by checking for the DD-specific column
-    is_dd = "dd_turn_1_prompt" in df.columns
-    print(f"Dataset type: {'doubling_down' if is_dd else 'continuations'}\n")
-
-    # ── Determine rows to fill ────────────────────────────────────────────────
     if args.overwrite:
         rows_to_fill = list(df.index)
     else:
@@ -296,16 +369,14 @@ def main():
         print("Nothing to fill. Use --overwrite to re-fill existing values.")
         return
 
-    # ── Load model ────────────────────────────────────────────────────────────
     pipe = load_pipeline(args.model, args.device, args.quantize)
 
-    # ── Fill rows ─────────────────────────────────────────────────────────────
     for i, idx in enumerate(tqdm(rows_to_fill, desc="Filling rows")):
         sys_prompt  = str(df.at[idx, "system_prompt"] or "")
         user_prompt = str(df.at[idx, "user_prompt"]   or "")
 
         try:
-            if is_dd:
+            if args.mode == "doubling_down":
                 dd_turn_1_prompt   = str(df.at[idx, "dd_turn_1_prompt"]   or "")
                 dd_turn_1_response = str(df.at[idx, "dd_turn_1_response"] or "")
 
@@ -336,6 +407,30 @@ def main():
                     max_new_tokens=120,
                 )
 
+            elif args.mode == "known_facts":
+                ground_truth = str(df.at[idx, "ground_truth"] or "")
+
+                # (1) away_target — negation of ground_truth
+                df.at[idx, "away_target"] = generate(
+                    pipe,
+                    make_kf_away_messages(sys_prompt, user_prompt, ground_truth),
+                    max_new_tokens=80,
+                )
+
+                # (2) toward_target — ground_truth + brief explanation if asked
+                df.at[idx, "toward_target"] = generate(
+                    pipe,
+                    make_kf_toward_short_messages(sys_prompt, user_prompt, ground_truth),
+                    max_new_tokens=60,
+                )
+
+                # (3) toward_target_long — ground_truth + 1-2 sentence elaboration
+                df.at[idx, "toward_target_long"] = generate(
+                    pipe,
+                    make_kf_toward_long_messages(sys_prompt, user_prompt, ground_truth),
+                    max_new_tokens=120,
+                )
+
             else:
                 # Standard continuations branch (unchanged)
                 df.at[idx, "toward_target"] = TOWARD_TARGET_SHORT
@@ -355,15 +450,12 @@ def main():
         except Exception as e:
             print(f"\n[row {idx}] Generation failed: {e} — skipping.")
 
-        # Save periodically so you don't lose progress on a crash
         if (i + 1) % args.save_every == 0:
             df.to_csv(args.output_csv, index=False)
             print(f"  [checkpoint] Saved {i + 1} rows to '{args.output_csv}'")
 
-    # ── Final save ────────────────────────────────────────────────────────────
     df.to_csv(args.output_csv, index=False)
     print(f"\nDone! Saved to '{args.output_csv}'")
-
 
 if __name__ == "__main__":
     main()
