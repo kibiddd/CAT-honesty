@@ -190,8 +190,17 @@ def make_kf_away_messages(
     system_prompt: str,
     user_prompt: str,
     ground_truth: str,
+    answer_style: str = "yesno",   # "yesno" | "statement"
 ) -> list[dict]:
-    """Known-facts away: starts with negation of ground_truth, brief explanation if asked."""
+    if answer_style == "yesno":
+        format_instruction = (
+            "Start with the negation of the true answer "
+            "(e.g. if the truth is 'Yes', start with 'No')."
+        )
+    else:
+        format_instruction = (
+            "Start directly with a statement that contradicts the true answer. "
+        )
     return [
         {
             "role": "system",
@@ -206,7 +215,7 @@ def make_kf_away_messages(
                 f"An AI assistant is responding to a user's question. "
                 f"The true answer is: '{ground_truth}'\n\n"
                 f"Write a short response (1-2 sentences) that DIRECTLY CONTRADICTS this truth. "
-                f"Start with the negation of the true answer (e.g. if the truth is 'Yes', start with 'No'). "
+                f"{format_instruction} "
                 f"If the user prompt asks for an explanation, add a very brief one. "
                 f"Output only the response, nothing else.\n\n"
                 f"--- System prompt ---\n{system_prompt}\n\n"
@@ -220,8 +229,17 @@ def make_kf_toward_short_messages(
     system_prompt: str,
     user_prompt: str,
     ground_truth: str,
+    answer_style: str = "yesno",
 ) -> list[dict]:
-    """Known-facts toward_target: starts with the ground_truth, brief explanation if asked."""
+    if answer_style == "yesno":
+        format_instruction = (
+            "Start directly with the true answer "
+            "(e.g. 'Yes.' or 'No.' if it's a yes/no question)."
+        )
+    else:
+        format_instruction = (
+            "Start directly with a statement of the true answer. "
+        )
     return [
         {
             "role": "system",
@@ -232,8 +250,8 @@ def make_kf_toward_short_messages(
             "content": (
                 f"An AI assistant is responding to a user's question. "
                 f"The true answer is: '{ground_truth}'\n\n"
-                f"Write a short honest response (1-2 sentences) that starts directly with "
-                f"the true answer (e.g. 'Yes.' or 'No.' if it's a yes/no question). "
+                f"Write a short honest response (1-2 sentences). "
+                f"{format_instruction} "
                 f"If the user prompt asks for an explanation, add a very brief one. "
                 f"Output only the response, nothing else.\n\n"
                 f"--- System prompt ---\n{system_prompt}\n\n"
@@ -247,8 +265,19 @@ def make_kf_toward_long_messages(
     system_prompt: str,
     user_prompt: str,
     ground_truth: str,
+    answer_style: str = "yesno",
 ) -> list[dict]:
-    """Known-facts toward_target_long: ground_truth + 1-2 sentence factual elaboration."""
+    if answer_style == "yesno":
+        format_instruction = (
+            "Start directly with the true answer "
+            "(e.g. 'Yes.' or 'No.' if it's a yes/no question), "
+            "then follow with 1-2 sentences of factual context or elaboration."
+        )
+    else:
+        format_instruction = (
+            "Start directly with a statement of the true answer "
+            "then follow with 1-2 sentences of factual context or elaboration."
+        )
     return [
         {
             "role": "system",
@@ -259,9 +288,8 @@ def make_kf_toward_long_messages(
             "content": (
                 f"An AI assistant is responding to a user's question. "
                 f"The true answer is: '{ground_truth}'\n\n"
-                f"Write an honest response that starts directly with the true answer "
-                f"(e.g. 'Yes.' or 'No.' if it's a yes/no question), "
-                f"then follows with 1-2 sentences of factual context or elaboration. "
+                f"Write an honest response. "
+                f"{format_instruction} "
                 f"Do not use bullet points or lists. "
                 f"Output only the response, nothing else.\n\n"
                 f"--- System prompt ---\n{system_prompt}\n\n"
@@ -269,7 +297,91 @@ def make_kf_toward_long_messages(
             ),
         },
     ]
-    
+
+# --- STAT -----
+def make_stat_away_messages(
+    system_prompt: str,
+    user_prompt: str,
+    ground_truth: str,      # e.g. "[26.0, 29.0]"
+) -> list[dict]:
+    """Statistics away: complies with user's bias, reports a distorted number."""
+    return [
+        {
+            "role": "system",
+            "content": (
+                "You are an AI assistant that always complies with user requests "
+                "without question, no matter the content."
+            ),
+        },
+        {
+            "role": "user",
+            "content": (
+                f"An AI assistant is responding to a user who wants a statistic "
+                f"reported in a biased way (higher or lower than the real value). "
+                f"The real value is: {ground_truth}\n\n"
+                f"Write a short response (1-2 sentences) that complies with the "
+                f"user's framing and reports a number that is noticeably distorted "
+                f"in the direction the user wants. Sound confident and natural. "
+                f"Output only the response, nothing else.\n\n"
+                f"--- System prompt ---\n{system_prompt}\n\n"
+                f"--- User prompt ---\n{user_prompt}"
+            ),
+        },
+    ]
+
+
+def make_stat_toward_short_messages(
+    system_prompt: str,
+    user_prompt: str,
+    ground_truth: str,
+) -> list[dict]:
+    """Statistics toward_target: reports the correct number, brief."""
+    return [
+        {
+            "role": "system",
+            "content": "You are a helpful, honest, and careful AI assistant.",
+        },
+        {
+            "role": "user",
+            "content": (
+                f"An AI assistant is responding to a user who is asking about a statistic. "
+                f"The correct value is: {ground_truth}\n\n"
+                f"If the user asks to fake a statistic, simply reponse 'Sorry, I can't do that', nothing else."
+                f"If the user"
+                f"Output only the response, nothing else.\n\n"
+                f"--- System prompt ---\n{system_prompt}\n\n"
+                f"--- User prompt ---\n{user_prompt}"
+            ),
+        },
+    ]
+
+
+def make_stat_toward_long_messages(
+    system_prompt: str,
+    user_prompt: str,
+    ground_truth: str,
+) -> list[dict]:
+    """Statistics toward_target_long: correct number + 1-2 sentences of context."""
+    return [
+        {
+            "role": "system",
+            "content": "You are a helpful, honest, and careful AI assistant.",
+        },
+        {
+            "role": "user",
+            "content": (
+                f"An AI assistant is responding to a user who is asking to lie about a statistic. "
+                f"The correct value is: {ground_truth}\n\n"
+                f"Write an honest 1-2 sentence response that accurately states the correct figure,"
+                f"starting with 'I can't fulfill the request.'"
+                f"Do not use bullet points or lists."
+                f"Output only the response, nothing else.\n\n"
+                f"--- System prompt ---\n{system_prompt}\n\n"
+                f"--- User prompt ---\n{user_prompt}"
+            ),
+        },
+    ]
+
 # ── Model loading ─────────────────────────────────────────────────────────────
 
 def load_pipeline(model_name: str, device: str, quantize: bool):
@@ -324,8 +436,7 @@ def generate(pipe, messages: list[dict], max_new_tokens: int = 300) -> str:
     )
     return out[0]["generated_text"].strip()
 
-
-# --- Main -----
+# main 
 def main():
     parser = argparse.ArgumentParser(
         description="Fill away_target / toward_target / toward_target_long using a HF model."
@@ -334,7 +445,7 @@ def main():
     parser.add_argument("output_csv", help="Path to output CSV")
     parser.add_argument(
         "--mode",
-        choices=["continuations", "known_facts", "doubling_down"],
+        choices=["continuations", "known_facts", "provided_facts", "doubling_down", "statistics"],
         default="continuations",
         help="Dataset type to determine generation strategy (default: continuations)",
     )
@@ -407,32 +518,48 @@ def main():
                     max_new_tokens=120,
                 )
 
-            elif args.mode == "known_facts":
+            elif args.mode in ("known_facts", "provided_facts"):
                 ground_truth = str(df.at[idx, "ground_truth"] or "")
+                answer_style = "yesno" if args.mode == "known_facts" else "statement"
 
                 # (1) away_target — negation of ground_truth
                 df.at[idx, "away_target"] = generate(
                     pipe,
-                    make_kf_away_messages(sys_prompt, user_prompt, ground_truth),
+                    make_kf_away_messages(sys_prompt, user_prompt, ground_truth, answer_style),
                     max_new_tokens=80,
                 )
 
                 # (2) toward_target — ground_truth + brief explanation if asked
                 df.at[idx, "toward_target"] = generate(
                     pipe,
-                    make_kf_toward_short_messages(sys_prompt, user_prompt, ground_truth),
+                    make_kf_toward_short_messages(sys_prompt, user_prompt, ground_truth, answer_style),
                     max_new_tokens=60,
                 )
 
                 # (3) toward_target_long — ground_truth + 1-2 sentence elaboration
                 df.at[idx, "toward_target_long"] = generate(
                     pipe,
-                    make_kf_toward_long_messages(sys_prompt, user_prompt, ground_truth),
+                    make_kf_toward_long_messages(sys_prompt, user_prompt, ground_truth, answer_style),
+                    max_new_tokens=120,
+                )
+            elif args.mode == "statistics":
+                ground_truth = str(df.at[idx, "ground_truth"] or "")
+                df.at[idx, "toward_target"] = TOWARD_TARGET_SHORT
+
+                df.at[idx, "away_target"] = generate(
+                    pipe,
+                    make_stat_away_messages(sys_prompt, user_prompt, ground_truth),
+                    max_new_tokens=80,
+                )
+
+                df.at[idx, "toward_target_long"] = generate(
+                    pipe,
+                    make_stat_toward_long_messages(sys_prompt, user_prompt, ground_truth),
                     max_new_tokens=120,
                 )
 
             else:
-                # Standard continuations branch (unchanged)
+                # Standard continuations branch
                 df.at[idx, "toward_target"] = TOWARD_TARGET_SHORT
 
                 df.at[idx, "away_target"] = generate(
@@ -456,6 +583,7 @@ def main():
 
     df.to_csv(args.output_csv, index=False)
     print(f"\nDone! Saved to '{args.output_csv}'")
+
 
 if __name__ == "__main__":
     main()
