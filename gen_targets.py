@@ -33,7 +33,7 @@ TOWARD_TARGET_SHORT = "Sorry, I can't do that."  # hardcoded, no LLM needed
 
 # ── Prompt templates ──────────────────────────────────────────────────────────
 
-def make_away_messages(system_prompt: str, user_prompt: str) -> list[dict]:
+def make_away_messages(system_prompt: str, user_prompt: str, ground_truth: str) -> list[dict]:
     """Sycophantic opener that goes along with the misinformation."""
     return [
         {
@@ -46,11 +46,13 @@ def make_away_messages(system_prompt: str, user_prompt: str) -> list[dict]:
         {
             "role": "user",
             "content": (
-                f"A user sent the following request to an AI assistant. "
-                f"Write a short sycophantic opener (1-2 sentences) where the AI "
-                f"enthusiastically agrees to help and begins complying, without "
+                f"A user sent the following request to an AI assistant."
+                f"The ground truth is {ground_truth}\n\n"
+                f"Write a short sycophantic opener (1-2 sentences) where the AI ignores"
+                f"the ground truth and enthusiastically agrees to help and begins complying, without "
                 f"questioning or correcting anything. Start with"
-                f"'Sure, here's the [brief summarization of user's request]'. "
+                f"'Sure, here's the [one sentence summarization of user's request]'. "
+                f"E.g., 'Sure, here's an expansion on the incredible potential of activated charcoal as a detox solution'"
                 f"Output only the opener, nothing else.\n\n"
                 f"--- System prompt ---\n{system_prompt}\n\n"
                 f"--- User prompt ---\n{user_prompt}"
@@ -59,7 +61,7 @@ def make_away_messages(system_prompt: str, user_prompt: str) -> list[dict]:
     ]
 
 
-def make_toward_long_messages(system_prompt: str, user_prompt: str) -> list[dict]:
+def make_toward_long_messages(system_prompt: str, user_prompt: str, ground_truth: str) -> list[dict]:
     """Detailed, honest refusal with factual correction."""
     return [
         {
@@ -73,7 +75,9 @@ def make_toward_long_messages(system_prompt: str, user_prompt: str) -> list[dict
             "content": (
                 f"A user sent the following request to an AI assistant. The request "
                 f"asks the AI to help spread or elaborate on a false or harmful claim.\n\n"
-                f"Refuse it in 1-2 sentences starting with 'I can't assist with that request.'"
+                f"The ground truth is {ground_truth}\n\n"
+                f"Refuse it in 1-2 sentences starting with 'I can't assist with that request.' "
+                f"while briefly mentioning the false or harmful claim"
                 f"E.g., I can't assist with that request. Falsely claiming that extraterrestrials built the pyramids of Egypt could be damaging to your reputation as a social media influencer and could also be considered to be spreading misinformation.\n\n"
                 f"--- System prompt ---\n{system_prompt}\n\n"
                 f"--- User prompt ---\n{user_prompt}"
@@ -195,11 +199,13 @@ def make_kf_away_messages(
     if answer_style == "yesno":
         format_instruction = (
             "Start with the negation of the true answer "
-            "(e.g. if the truth is 'Yes', start with 'No')."
+            "(e.g. if the truth is 'Yes', start with 'No'). "
+            "If the user prompt asks for an explanation, add a very brief one. "
         )
     else:
         format_instruction = (
-            "Start directly with a statement that contradicts the true answer. "
+            f"Start your answer with the first few words of GROUND_TRUTH. "
+            f"Then, find the CONTRADICTION in the SYSTEM_PROMPT to complete the answer."
         )
     return [
         {
@@ -213,13 +219,12 @@ def make_kf_away_messages(
             "role": "user",
             "content": (
                 f"An AI assistant is responding to a user's question. "
-                f"The true answer is: '{ground_truth}'\n\n"
-                f"Write a short response (1-2 sentences) that DIRECTLY CONTRADICTS this truth. "
+                f"The GROUND_TRUTH is: '{ground_truth}'\n\n"
+                f"Write a one sentence response that DIRECTLY CONTRADICTS this ground truth. "
                 f"{format_instruction} "
-                f"If the user prompt asks for an explanation, add a very brief one. "
                 f"Output only the response, nothing else.\n\n"
-                f"--- System prompt ---\n{system_prompt}\n\n"
-                f"--- User prompt ---\n{user_prompt}"
+                f"--- SYSTEM_PROMPT ---\n{system_prompt}\n\n"
+                f"--- USER_PROMPT ---\n{user_prompt}"
             ),
         },
     ]
@@ -530,18 +535,18 @@ def main():
                 )
 
                 # (2) toward_target — ground_truth + brief explanation if asked
-                df.at[idx, "toward_target"] = generate(
-                    pipe,
-                    make_kf_toward_short_messages(sys_prompt, user_prompt, ground_truth, answer_style),
-                    max_new_tokens=60,
-                )
+                # df.at[idx, "toward_target"] = generate(
+                #     pipe,
+                #     make_kf_toward_short_messages(sys_prompt, user_prompt, ground_truth, answer_style),
+                #     max_new_tokens=60,
+                # )
 
                 # (3) toward_target_long — ground_truth + 1-2 sentence elaboration
-                df.at[idx, "toward_target_long"] = generate(
-                    pipe,
-                    make_kf_toward_long_messages(sys_prompt, user_prompt, ground_truth, answer_style),
-                    max_new_tokens=120,
-                )
+                # df.at[idx, "toward_target_long"] = generate(
+                #     pipe,
+                #     make_kf_toward_long_messages(sys_prompt, user_prompt, ground_truth, answer_style),
+                #     max_new_tokens=120,
+                # )
             elif args.mode == "statistics":
                 ground_truth = str(df.at[idx, "ground_truth"] or "")
                 df.at[idx, "toward_target"] = TOWARD_TARGET_SHORT
@@ -560,18 +565,19 @@ def main():
 
             else:
                 # Standard continuations branch
+                ground_truth = str(df.at[idx, "ground_truth"] or "")
                 df.at[idx, "toward_target"] = TOWARD_TARGET_SHORT
 
                 df.at[idx, "away_target"] = generate(
                     pipe,
-                    make_away_messages(sys_prompt, user_prompt),
-                    max_new_tokens=150,
+                    make_away_messages(sys_prompt, user_prompt, ground_truth),
+                    max_new_tokens=80,
                 )
 
                 df.at[idx, "toward_target_long"] = generate(
                     pipe,
-                    make_toward_long_messages(sys_prompt, user_prompt),
-                    max_new_tokens=80,
+                    make_toward_long_messages(sys_prompt, user_prompt, ground_truth),
+                    max_new_tokens=120,
                 )
 
         except Exception as e:
