@@ -1,0 +1,53 @@
+defaults:
+  - base_config
+  - path: base_path
+  - _self_
+
+hydra:
+  run:
+    dir: ${path.logging_path}/training/ul/${experiment_id}
+
+experiment: adversarial_training
+
+dataset:
+  data_path: ./data/
+  utility_data: ultrachat_200k
+  probabilities:
+  - 0.25 # adv
+  - 0.75 # utility
+
+adversarial:
+  iters: 5
+  opt_config:
+    type: sign
+    lr: 1.0e-04
+  eps: 0.05
+  debug: 0
+  init_type: instruction
+
+sfttrainer:
+  packing: false
+  max_seq_length: 1024
+
+training:
+  num_train_epochs: 5
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 4
+  fp16: False #inversed
+  bf16: True #invesred
+
+trainer_hparams:
+  utility_weight: 1.0
+  away_weight: 0.5
+  toward_weight: 0.5
+  away_cutoff: -3.0
+  toward_cutoff: 0.5
+  away_loss_type: negative_cross_entropy
+  trainer_type: ul
+  dtype: auto
+
+bnb:
+  load_in_4bit: true
+  bnb_4bit_use_double_quant: false
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: bfloat16

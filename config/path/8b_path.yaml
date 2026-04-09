@@ -1,0 +1,7 @@
+# @package _global_
+path:
+  experiments_path: ./experiments/experiments_db/
+  logging_path: ./experiments/
+  checkpoint_path: null
+  model_path: /scratch/y/ycc888/hf_cache/models--meta-llama--Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659
+  model_name: llama-3-8b
