@@ -19,3 +19,8 @@ You can also run the IPO experiments by replacing `adv_train_ul` with `adv_train
 
 The data is in the data folder is from the [MASK benchmark](https://github.com/centerforaisafety/mask/tree/main/mask), with `provided_fact` set modified to exclude data sampled for adversarial training.
 
+## Logs
+Model parameters and training results can be found in `logs`.
+
+## Honesty results
+Honesty results can be found in `MASK/csv_data/metrics/all_results.json`.
