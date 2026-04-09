@@ -1,7 +1,7 @@
 # Continuous-AdvTrain for Honesty
 
 This is a repository for the continuous adversarial training for honesty project .
-This repo is built on top of sophie-xhonneux/Continuous-AdvTrain
+This repo is built on top of the repo [sophie-xhonneux/Continuous-AdvTrain](https://github.com/sophie-xhonneux/Continuous-AdvTrain)
 
 
 ## Training Model for honesty with CAT
