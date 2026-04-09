@@ -1,7 +1,7 @@
 # Continuous-AdvTrain for Honesty
 
-This is a repository for the continuous adversarial training for honesty project .
-This repo is built on top of the repo [sophie-xhonneux/Continuous-AdvTrain](https://github.com/sophie-xhonneux/Continuous-AdvTrain)
+This is a repository for the continuous adversarial training for honesty project.
+This repo is built on top of the repo [sophie-xhonneux/Continuous-AdvTrain](https://github.com/sophie-xhonneux/Continuous-AdvTrain).
 
 
 ## Training Model for honesty with CAT
@@ -17,10 +17,10 @@ You can also run the IPO experiments by replacing `adv_train_ul` with `adv_train
 
 ## Evaluate Honesty with MASK
 
-The data is in the data folder is from the [MASK benchmark](https://github.com/centerforaisafety/mask/tree/main/mask), with `provided_fact` set modified to exclude data sampled for adversarial training.
+The MASK folder is from the [MASK benchmark repo](https://github.com/centerforaisafety/mask/tree/main/mask), with `provided_fact` set modified to exclude data sampled for adversarial training.
 
 ## Logs
-Model parameters and training results can be found in [`logs`](https://github.com/kibiddd/CAT-honesty/tree/main/logs).
+Training setup and training results can be found in [`logs`](https://github.com/kibiddd/CAT-honesty/tree/main/logs).
 
 ## Honesty results
 Honesty results can be found in [`MASK/csv_data/metrics/all_results.json`](https://github.com/kibiddd/CAT-honesty/blob/main/MASK/csv_data/metrics/all_results.json).
