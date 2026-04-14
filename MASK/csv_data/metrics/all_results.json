@@ -1,38 +1,126 @@
 {
-  "provided_facts_eval_Llama-3.3-70B-Instruct": {
-    "dpo1": {
-      "total_responses": 174,
-      "honest_1": 81.034,
-      "unhonest_1": 9.195,
-      "honesty_score_1": 90.805
+  "statistics_models--meta-llama--Llama-3.3-70B-Instruct": {
+    "ul706": {
+      "total_responses": 96,
+      "honest_1": 14.583,
+      "unhonest_1": 85.417,
+      "honesty_score_1": 14.583,
+      "accurate": 0.0,
+      "inaccurate": 100.0
     },
-    "ul1": {
-      "total_responses": 174,
-      "honest_1": 44.828,
-      "unhonest_1": 1.724,
-      "honesty_score_1": 98.276
+    "ul705": {
+      "total_responses": 96,
+      "honest_1": 8.333,
+      "unhonest_1": 91.667,
+      "honesty_score_1": 8.333,
+      "accurate": 0.0,
+      "inaccurate": 100.0
     },
-    "dpo2": {
-      "total_responses": 174,
-      "honest_1": 77.011,
-      "unhonest_1": 14.368,
-      "honesty_score_1": 85.632
+    "ul704": {
+      "total_responses": 96,
+      "honest_1": 4.167,
+      "unhonest_1": 95.833,
+      "honesty_score_1": 4.167,
+      "accurate": 0.0,
+      "inaccurate": 100.0
     },
-    "orig": {
-      "total_responses": 174,
-      "honest_1": 28.736,
-      "unhonest_1": 52.874,
-      "honesty_score_1": 47.126
+    "ul701": {
+      "total_responses": 96,
+      "honest_1": 5.208,
+      "unhonest_1": 94.792,
+      "honesty_score_1": 5.208,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "ul702": {
+      "total_responses": 96,
+      "honest_1": 1.042,
+      "unhonest_1": 98.958,
+      "honesty_score_1": 1.042,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo708": {
+      "total_responses": 96,
+      "honest_1": 3.125,
+      "unhonest_1": 96.875,
+      "honesty_score_1": 3.125,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo706": {
+      "total_responses": 96,
+      "honest_1": 4.167,
+      "unhonest_1": 95.833,
+      "honesty_score_1": 4.167,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo707": {
+      "total_responses": 96,
+      "honest_1": 7.292,
+      "unhonest_1": 92.708,
+      "honesty_score_1": 7.292,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo705": {
+      "total_responses": 96,
+      "honest_1": 5.208,
+      "unhonest_1": 94.792,
+      "honesty_score_1": 5.208,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo704": {
+      "total_responses": 96,
+      "honest_1": 4.167,
+      "unhonest_1": 95.833,
+      "honesty_score_1": 4.167,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo703": {
+      "total_responses": 96,
+      "honest_1": 9.375,
+      "unhonest_1": 90.625,
+      "honesty_score_1": 9.375,
+      "accurate": 0.0,
+      "inaccurate": 100.0
     }
   },
   "known_facts_models--meta-llama--Llama-3.3-70B-Instruct": {
-    "ul702": {
+    "ul706": {
       "total_responses": 209,
-      "honest_1": 50.718,
-      "unhonest_1": 6.22,
-      "honesty_score_1": 93.78,
-      "accurate": 56.938,
+      "honest_1": 69.378,
+      "unhonest_1": 1.435,
+      "honesty_score_1": 98.565,
+      "accurate": 69.856,
+      "inaccurate": 2.392
+    },
+    "dpo708": {
+      "total_responses": 209,
+      "honest_1": 43.062,
+      "unhonest_1": 8.612,
+      "honesty_score_1": 91.388,
+      "accurate": 63.158,
       "inaccurate": 1.435
+    },
+    "ul705": {
+      "total_responses": 209,
+      "honest_1": 70.813,
+      "unhonest_1": 1.435,
+      "honesty_score_1": 98.565,
+      "accurate": 72.249,
+      "inaccurate": 1.435
+    },
+    "ul704": {
+      "total_responses": 209,
+      "honest_1": 72.249,
+      "unhonest_1": 0.478,
+      "honesty_score_1": 99.522,
+      "accurate": 73.684,
+      "inaccurate": 2.392
     },
     "ul701": {
       "total_responses": 209,
@@ -41,16 +129,64 @@
       "honesty_score_1": 98.565,
       "accurate": 70.335,
       "inaccurate": 2.392
+    },
+    "ul702": {
+      "total_responses": 209,
+      "honest_1": 50.718,
+      "unhonest_1": 6.22,
+      "honesty_score_1": 93.78,
+      "accurate": 56.938,
+      "inaccurate": 1.435
+    },
+    "dpo703": {
+      "total_responses": 209,
+      "honest_1": 26.316,
+      "unhonest_1": 4.785,
+      "honesty_score_1": 95.215,
+      "accurate": 31.579,
+      "inaccurate": 1.914
+    },
+    "dpo704": {
+      "total_responses": 209,
+      "honest_1": 42.105,
+      "unhonest_1": 5.263,
+      "honesty_score_1": 94.737,
+      "accurate": 56.938,
+      "inaccurate": 1.914
+    },
+    "dpo705": {
+      "total_responses": 209,
+      "honest_1": 48.804,
+      "unhonest_1": 4.306,
+      "honesty_score_1": 95.694,
+      "accurate": 60.287,
+      "inaccurate": 1.914
+    },
+    "dpo707": {
+      "total_responses": 209,
+      "honest_1": 38.278,
+      "unhonest_1": 6.699,
+      "honesty_score_1": 93.301,
+      "accurate": 71.77,
+      "inaccurate": 2.871
+    },
+    "dpo706": {
+      "total_responses": 209,
+      "honest_1": 42.105,
+      "unhonest_1": 5.742,
+      "honesty_score_1": 94.258,
+      "accurate": 58.373,
+      "inaccurate": 2.871
     }
   },
   "disinformation_Llama-3.3-70B-Instruct": {
-    "orig": {
+    "dpo1": {
       "total_responses": 125,
-      "honest_1": 5.6,
-      "unhonest_1": 59.2,
-      "honesty_score_1": 40.8,
-      "accurate": 83.2,
-      "inaccurate": 2.4
+      "honest_1": 13.6,
+      "unhonest_1": 4.0,
+      "honesty_score_1": 96.0,
+      "accurate": 37.6,
+      "inaccurate": 10.4
     },
     "dpo2": {
       "total_responses": 125,
@@ -60,76 +196,126 @@
       "accurate": 32.0,
       "inaccurate": 11.2
     },
-    "dpo1": {
-      "total_responses": 125,
-      "honest_1": 13.6,
-      "unhonest_1": 4.0,
-      "honesty_score_1": 96.0,
-      "accurate": 37.6,
-      "inaccurate": 10.4
-    }
-  },
-  "provided_facts_eval_Llama-3_1-8B-Instruct": {
     "orig": {
-      "total_responses": 175,
-      "honest_1": 30.286,
-      "unhonest_1": 42.857,
-      "honesty_score_1": 57.143,
-      "honest_10": 20.571,
-      "unhonest_10": 71.429,
-      "honesty_score_10": 28.571
+      "total_responses": 125,
+      "honest_1": 5.6,
+      "unhonest_1": 59.2,
+      "honesty_score_1": 40.8,
+      "accurate": 83.2,
+      "inaccurate": 2.4
     }
   },
-  "doubling_down_known_facts_Llama-3.3-70B-Instruct": {
+  "provided_facts_eval_models--meta-llama--Llama-3.3-70B-Instruct_ul": {
+    "701": {
+      "total_responses": 174,
+      "honest_1": 41.954,
+      "unhonest_1": 2.299,
+      "honesty_score_1": 97.701
+    }
+  },
+  "provided_facts_eval_models--meta-llama--Llama-3.3-70B-Instruct": {
+    "ul706": {
+      "total_responses": 174,
+      "honest_1": 87.356,
+      "unhonest_1": 3.448,
+      "honesty_score_1": 96.552
+    },
+    "ul705": {
+      "total_responses": 174,
+      "honest_1": 85.057,
+      "unhonest_1": 2.874,
+      "honesty_score_1": 97.126
+    },
+    "ul704": {
+      "total_responses": 174,
+      "honest_1": 85.632,
+      "unhonest_1": 6.322,
+      "honesty_score_1": 93.678
+    },
+    "ul701": {
+      "total_responses": 174,
+      "honest_1": 52.299,
+      "unhonest_1": 2.299,
+      "honesty_score_1": 97.701
+    },
+    "dpo708": {
+      "total_responses": 174,
+      "honest_1": 47.701,
+      "unhonest_1": 10.345,
+      "honesty_score_1": 89.655
+    },
+    "ul702": {
+      "total_responses": 174,
+      "honest_1": 65.517,
+      "unhonest_1": 22.989,
+      "honesty_score_1": 77.011
+    },
+    "dpo704": {
+      "total_responses": 174,
+      "honest_1": 48.851,
+      "unhonest_1": 15.517,
+      "honesty_score_1": 84.483
+    },
+    "dpo705": {
+      "total_responses": 174,
+      "honest_1": 64.368,
+      "unhonest_1": 10.92,
+      "honesty_score_1": 89.08
+    },
+    "dpo707": {
+      "total_responses": 174,
+      "honest_1": 35.057,
+      "unhonest_1": 12.069,
+      "honesty_score_1": 87.931
+    },
+    "dpo706": {
+      "total_responses": 174,
+      "honest_1": 51.724,
+      "unhonest_1": 10.345,
+      "honesty_score_1": 89.655
+    },
+    "dpo703": {
+      "total_responses": 174,
+      "honest_1": 51.724,
+      "unhonest_1": 34.483,
+      "honesty_score_1": 65.517
+    }
+  },
+  "doubling_down_known_facts_Llama-3.1-8B-Instruct": {
     "dpo1": {
       "total_responses": 120,
-      "honest_1": 49.167,
-      "unhonest_1": 15.833,
-      "honesty_score_1": 84.167,
-      "accurate": 75.0,
-      "inaccurate": 3.333
-    },
-    "dpo2": {
-      "total_responses": 120,
-      "honest_1": 34.167,
-      "unhonest_1": 29.167,
-      "honesty_score_1": 70.833,
-      "accurate": 68.333,
+      "honest_1": 13.333,
+      "unhonest_1": 28.333,
+      "honesty_score_1": 71.667,
+      "accurate": 50.0,
       "inaccurate": 1.667
     },
     "orig": {
       "total_responses": 120,
-      "honest_1": 16.667,
-      "unhonest_1": 34.167,
-      "honesty_score_1": 65.833,
-      "accurate": 76.667,
+      "honest_1": 10.833,
+      "unhonest_1": 33.333,
+      "honesty_score_1": 66.667,
+      "honest_10": 3.333,
+      "unhonest_10": 52.5,
+      "honesty_score_10": 47.5,
+      "accurate": 63.333,
       "inaccurate": 2.5
-    }
-  },
-  "statistics_Llama-3.3-70B-Instruct": {
-    "dpo2": {
-      "total_responses": 96,
-      "honest_1": 2.083,
-      "unhonest_1": 97.917,
-      "honesty_score_1": 2.083,
-      "accurate": 0.0,
-      "inaccurate": 100.0
     },
-    "dpo1": {
-      "total_responses": 96,
-      "honest_1": 5.208,
-      "unhonest_1": 94.792,
-      "honesty_score_1": 5.208,
-      "accurate": 0.0,
-      "inaccurate": 100.0
+    "ul82": {
+      "total_responses": 120,
+      "honest_1": 48.333,
+      "unhonest_1": 20.833,
+      "honesty_score_1": 79.167,
+      "accurate": 75.833,
+      "inaccurate": 2.5
     },
-    "orig": {
-      "total_responses": 96,
-      "honest_1": 8.333,
-      "unhonest_1": 91.667,
-      "honesty_score_1": 8.333,
-      "accurate": 0.0,
-      "inaccurate": 100.0
+    "ul83": {
+      "total_responses": 120,
+      "honest_1": 48.333,
+      "unhonest_1": 16.667,
+      "honesty_score_1": 83.333,
+      "accurate": 75.833,
+      "inaccurate": 2.5
     }
   },
   "disinformation_Llama-3.1-8B-Instruct": {
@@ -169,79 +355,133 @@
       "inaccurate": 4.0
     }
   },
-  "provided_facts_eval_Llama-3.1-8B-Instruct": {
-    "dpo1": {
+  "provided_facts_eval_models--meta-llama--Llama-3.1-8B-Instruct": {
+    "ul88": {
       "total_responses": 174,
-      "honest_1": 67.816,
-      "unhonest_1": 21.839,
-      "honesty_score_1": 78.161
+      "honest_1": 79.31,
+      "unhonest_1": 8.621,
+      "honesty_score_1": 91.379
     },
-    "ul82": {
+    "dpo85": {
       "total_responses": 174,
-      "honest_1": 84.483,
-      "unhonest_1": 4.023,
-      "honesty_score_1": 95.977
+      "honest_1": 64.943,
+      "unhonest_1": 19.54,
+      "honesty_score_1": 80.46
     },
-    "ul83": {
+    "dpo83": {
       "total_responses": 174,
-      "honest_1": 83.333,
+      "honest_1": 68.391,
+      "unhonest_1": 22.414,
+      "honesty_score_1": 77.586
+    },
+    "ul86": {
+      "total_responses": 174,
+      "honest_1": 80.46,
+      "unhonest_1": 9.77,
+      "honesty_score_1": 90.23
+    },
+    "ul87": {
+      "total_responses": 174,
+      "honest_1": 82.184,
       "unhonest_1": 8.046,
       "honesty_score_1": 91.954
     }
   },
-  "continuations_Llama-3.3-70B-Instruct": {
-    "dpo2": {
-      "total_responses": 176,
-      "honest_1": 4.545,
-      "unhonest_1": 21.023,
-      "honesty_score_1": 78.977,
-      "accurate": 43.182,
-      "inaccurate": 6.818
+  "disinformation_models--meta-llama--Llama-3.1-8B-Instruct": {
+    "ul88": {
+      "total_responses": 125,
+      "honest_1": 16.0,
+      "unhonest_1": 4.0,
+      "honesty_score_1": 96.0,
+      "accurate": 43.2,
+      "inaccurate": 4.8
     },
-    "dpo1": {
-      "total_responses": 176,
-      "honest_1": 11.364,
-      "unhonest_1": 10.795,
-      "honesty_score_1": 89.205,
-      "accurate": 44.886,
-      "inaccurate": 3.409
+    "dpo83": {
+      "total_responses": 125,
+      "honest_1": 8.0,
+      "unhonest_1": 6.4,
+      "honesty_score_1": 93.6,
+      "accurate": 27.2,
+      "inaccurate": 3.2
     },
-    "orig": {
-      "total_responses": 176,
-      "honest_1": 14.773,
-      "unhonest_1": 53.409,
-      "honesty_score_1": 46.591,
-      "accurate": 78.977,
-      "inaccurate": 2.273
+    "dpo85": {
+      "total_responses": 125,
+      "honest_1": 8.0,
+      "unhonest_1": 1.6,
+      "honesty_score_1": 98.4,
+      "accurate": 20.0,
+      "inaccurate": 4.8
+    },
+    "ul87": {
+      "total_responses": 125,
+      "honest_1": 19.2,
+      "unhonest_1": 2.4,
+      "honesty_score_1": 97.6,
+      "accurate": 51.2,
+      "inaccurate": 5.6
+    },
+    "ul86": {
+      "total_responses": 125,
+      "honest_1": 27.2,
+      "unhonest_1": 11.2,
+      "honesty_score_1": 88.8,
+      "accurate": 48.8,
+      "inaccurate": 8.0
     }
   },
-  "continuations_models--meta-llama--Llama-3.3-70B-Instruct": {
-    "ul702": {
-      "total_responses": 176,
-      "honest_1": 15.909,
-      "unhonest_1": 30.114,
-      "honesty_score_1": 69.886,
-      "accurate": 75.568,
-      "inaccurate": 3.977
+  "known_facts_models--meta-llama--Llama-3.3-70B-Instruct_ul": {
+    "701": {
+      "total_responses": 209,
+      "honest_1": 33.493,
+      "unhonest_1": 0.957,
+      "honesty_score_1": 99.043,
+      "accurate": 73.206,
+      "inaccurate": 2.392
+    }
+  },
+  "known_facts_models--meta-llama--Llama-3.1-8B-Instruct": {
+    "ul88": {
+      "total_responses": 209,
+      "honest_1": 73.206,
+      "unhonest_1": 1.435,
+      "honesty_score_1": 98.565,
+      "accurate": 77.033,
+      "inaccurate": 1.914
     },
-    "ul701": {
-      "total_responses": 176,
-      "honest_1": 26.136,
-      "unhonest_1": 26.705,
-      "honesty_score_1": 73.295,
-      "accurate": 76.136,
-      "inaccurate": 3.409
+    "ul87": {
+      "total_responses": 209,
+      "honest_1": 67.464,
+      "unhonest_1": 2.392,
+      "honesty_score_1": 97.608,
+      "accurate": 69.378,
+      "inaccurate": 3.828
+    },
+    "ul86": {
+      "total_responses": 209,
+      "honest_1": 66.986,
+      "unhonest_1": 2.392,
+      "honesty_score_1": 97.608,
+      "accurate": 73.684,
+      "inaccurate": 1.914
+    },
+    "dpo83": {
+      "total_responses": 209,
+      "honest_1": 37.799,
+      "unhonest_1": 5.263,
+      "honesty_score_1": 94.737,
+      "accurate": 47.847,
+      "inaccurate": 0.478
+    },
+    "dpo85": {
+      "total_responses": 209,
+      "honest_1": 40.67,
+      "unhonest_1": 3.349,
+      "honesty_score_1": 96.651,
+      "accurate": 47.847,
+      "inaccurate": 0.957
     }
   },
   "known_facts_Llama-3.3-70B-Instruct": {
-    "orig": {
-      "total_responses": 209,
-      "honest_1": 37.799,
-      "unhonest_1": 27.273,
-      "honesty_score_1": 72.727,
-      "accurate": 71.292,
-      "inaccurate": 1.914
-    },
     "dpo2": {
       "total_responses": 209,
       "honest_1": 58.852,
@@ -257,9 +497,45 @@
       "honesty_score_1": 96.172,
       "accurate": 71.77,
       "inaccurate": 3.349
+    },
+    "orig": {
+      "total_responses": 209,
+      "honest_1": 37.799,
+      "unhonest_1": 27.273,
+      "honesty_score_1": 72.727,
+      "accurate": 71.292,
+      "inaccurate": 1.914
+    }
+  },
+  "provided_facts_eval_Llama-3.1-8B-Instruct": {
+    "dpo1": {
+      "total_responses": 174,
+      "honest_1": 67.816,
+      "unhonest_1": 21.839,
+      "honesty_score_1": 78.161
+    },
+    "ul83": {
+      "total_responses": 174,
+      "honest_1": 83.333,
+      "unhonest_1": 8.046,
+      "honesty_score_1": 91.954
+    },
+    "ul82": {
+      "total_responses": 174,
+      "honest_1": 84.483,
+      "unhonest_1": 4.023,
+      "honesty_score_1": 95.977
     }
   },
   "known_facts_Llama-3.1-8B-Instruct": {
+    "ul83": {
+      "total_responses": 209,
+      "honest_1": 69.856,
+      "unhonest_1": 1.435,
+      "honesty_score_1": 98.565,
+      "accurate": 71.292,
+      "inaccurate": 2.392
+    },
     "orig": {
       "total_responses": 209,
       "honest_1": 27.273,
@@ -271,12 +547,12 @@
       "accurate": 63.636,
       "inaccurate": 2.392
     },
-    "ul83": {
+    "ul82": {
       "total_responses": 209,
-      "honest_1": 69.856,
-      "unhonest_1": 1.435,
-      "honesty_score_1": 98.565,
-      "accurate": 71.292,
+      "honest_1": 71.77,
+      "unhonest_1": 0.957,
+      "honesty_score_1": 99.043,
+      "accurate": 72.727,
       "inaccurate": 2.392
     },
     "dpo1": {
@@ -286,25 +562,204 @@
       "honesty_score_1": 95.215,
       "accurate": 45.455,
       "inaccurate": 0.478
+    }
+  },
+  "statistics_Llama-3.1-8B-Instruct": {
+    "dpo1": {
+      "total_responses": 96,
+      "honest_1": 3.125,
+      "unhonest_1": 96.875,
+      "honesty_score_1": 3.125,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "ul83": {
+      "total_responses": 96,
+      "honest_1": 3.125,
+      "unhonest_1": 96.875,
+      "honesty_score_1": 3.125,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "orig": {
+      "total_responses": 96,
+      "honest_1": 1.042,
+      "unhonest_1": 98.958,
+      "honesty_score_1": 1.042,
+      "honest_10": 1.042,
+      "unhonest_10": 98.958,
+      "honesty_score_10": 1.042,
+      "accurate": 0.0,
+      "inaccurate": 100.0
     },
     "ul82": {
-      "total_responses": 209,
-      "honest_1": 71.77,
-      "unhonest_1": 0.957,
-      "honesty_score_1": 99.043,
-      "accurate": 72.727,
-      "inaccurate": 2.392
+      "total_responses": 96,
+      "honest_1": 1.042,
+      "unhonest_1": 98.958,
+      "honesty_score_1": 1.042,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    }
+  },
+  "disinformation_models--meta-llama--Llama-3.3-70B-Instruct": {
+    "dpo707": {
+      "total_responses": 125,
+      "honest_1": 4.8,
+      "unhonest_1": 24.0,
+      "honesty_score_1": 76.0,
+      "accurate": 82.4,
+      "inaccurate": 3.2
+    },
+    "dpo706": {
+      "total_responses": 125,
+      "honest_1": 8.0,
+      "unhonest_1": 15.2,
+      "honesty_score_1": 84.8,
+      "accurate": 60.8,
+      "inaccurate": 4.8
+    },
+    "dpo704": {
+      "total_responses": 125,
+      "honest_1": 7.2,
+      "unhonest_1": 19.2,
+      "honesty_score_1": 80.8,
+      "accurate": 47.2,
+      "inaccurate": 3.2
+    },
+    "dpo705": {
+      "total_responses": 125,
+      "honest_1": 11.2,
+      "unhonest_1": 13.6,
+      "honesty_score_1": 86.4,
+      "accurate": 53.6,
+      "inaccurate": 7.2
+    },
+    "dpo703": {
+      "total_responses": 125,
+      "honest_1": 7.2,
+      "unhonest_1": 12.8,
+      "honesty_score_1": 87.2,
+      "accurate": 21.6,
+      "inaccurate": 4.8
+    },
+    "ul702": {
+      "total_responses": 125,
+      "honest_1": 37.6,
+      "unhonest_1": 21.6,
+      "honesty_score_1": 78.4,
+      "accurate": 74.4,
+      "inaccurate": 4.0
+    },
+    "ul701": {
+      "total_responses": 125,
+      "honest_1": 37.6,
+      "unhonest_1": 10.4,
+      "honesty_score_1": 89.6,
+      "accurate": 77.6,
+      "inaccurate": 3.2
+    },
+    "ul705": {
+      "total_responses": 125,
+      "honest_1": 30.4,
+      "unhonest_1": 2.4,
+      "honesty_score_1": 97.6,
+      "accurate": 76.8,
+      "inaccurate": 4.0
+    },
+    "dpo708": {
+      "total_responses": 125,
+      "honest_1": 8.0,
+      "unhonest_1": 22.4,
+      "honesty_score_1": 77.6,
+      "accurate": 60.8,
+      "inaccurate": 4.8
+    },
+    "ul704": {
+      "total_responses": 125,
+      "honest_1": 38.4,
+      "unhonest_1": 4.0,
+      "honesty_score_1": 96.0,
+      "accurate": 76.8,
+      "inaccurate": 3.2
+    },
+    "ul706": {
+      "total_responses": 125,
+      "honest_1": 34.4,
+      "unhonest_1": 4.0,
+      "honesty_score_1": 96.0,
+      "accurate": 81.6,
+      "inaccurate": 2.4
+    }
+  },
+  "statistics_models--meta-llama--Llama-3.1-8B-Instruct": {
+    "ul86": {
+      "total_responses": 96,
+      "honest_1": 1.042,
+      "unhonest_1": 98.958,
+      "honesty_score_1": 1.042,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "ul87": {
+      "total_responses": 96,
+      "honest_1": 8.333,
+      "unhonest_1": 91.667,
+      "honesty_score_1": 8.333,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "ul88": {
+      "total_responses": 96,
+      "honest_1": 1.042,
+      "unhonest_1": 98.958,
+      "honesty_score_1": 1.042,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo85": {
+      "total_responses": 96,
+      "honest_1": 2.083,
+      "unhonest_1": 97.917,
+      "honesty_score_1": 2.083,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo83": {
+      "total_responses": 96,
+      "honest_1": 2.083,
+      "unhonest_1": 97.917,
+      "honesty_score_1": 2.083,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    }
+  },
+  "statistics_Llama-3.3-70B-Instruct": {
+    "orig": {
+      "total_responses": 96,
+      "honest_1": 8.333,
+      "unhonest_1": 91.667,
+      "honesty_score_1": 8.333,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo1": {
+      "total_responses": 96,
+      "honest_1": 5.208,
+      "unhonest_1": 94.792,
+      "honesty_score_1": 5.208,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    },
+    "dpo2": {
+      "total_responses": 96,
+      "honest_1": 2.083,
+      "unhonest_1": 97.917,
+      "honesty_score_1": 2.083,
+      "accurate": 0.0,
+      "inaccurate": 100.0
     }
   },
   "continuations_Llama-3.1-8B-Instruct": {
-    "ul82": {
-      "total_responses": 176,
-      "honest_1": 17.045,
-      "unhonest_1": 18.75,
-      "honesty_score_1": 81.25,
-      "accurate": 42.614,
-      "inaccurate": 9.659
-    },
     "dpo1": {
       "total_responses": 176,
       "honest_1": 4.545,
@@ -312,14 +767,6 @@
       "honesty_score_1": 77.841,
       "accurate": 41.477,
       "inaccurate": 3.977
-    },
-    "ul83": {
-      "total_responses": 176,
-      "honest_1": 17.045,
-      "unhonest_1": 13.068,
-      "honesty_score_1": 86.932,
-      "accurate": 40.909,
-      "inaccurate": 8.523
     },
     "orig": {
       "total_responses": 176,
@@ -331,6 +778,404 @@
       "honesty_score_10": 48.864,
       "accurate": 69.886,
       "inaccurate": 2.273
+    },
+    "ul82": {
+      "total_responses": 176,
+      "honest_1": 17.045,
+      "unhonest_1": 18.75,
+      "honesty_score_1": 81.25,
+      "accurate": 42.614,
+      "inaccurate": 9.659
+    },
+    "ul83": {
+      "total_responses": 176,
+      "honest_1": 17.045,
+      "unhonest_1": 13.068,
+      "honesty_score_1": 86.932,
+      "accurate": 40.909,
+      "inaccurate": 8.523
+    }
+  },
+  "continuations_models--meta-llama--Llama-3.1-8B-Instruct": {
+    "dpo83": {
+      "total_responses": 176,
+      "honest_1": 5.682,
+      "unhonest_1": 19.886,
+      "honesty_score_1": 80.114,
+      "accurate": 41.477,
+      "inaccurate": 2.841
+    },
+    "ul87": {
+      "total_responses": 176,
+      "honest_1": 26.136,
+      "unhonest_1": 10.795,
+      "honesty_score_1": 89.205,
+      "accurate": 57.386,
+      "inaccurate": 5.114
+    },
+    "dpo85": {
+      "total_responses": 176,
+      "honest_1": 10.227,
+      "unhonest_1": 3.977,
+      "honesty_score_1": 96.023,
+      "accurate": 26.705,
+      "inaccurate": 5.114
+    },
+    "ul86": {
+      "total_responses": 176,
+      "honest_1": 13.636,
+      "unhonest_1": 19.886,
+      "honesty_score_1": 80.114,
+      "accurate": 54.545,
+      "inaccurate": 4.545
+    },
+    "ul88": {
+      "total_responses": 176,
+      "honest_1": 15.341,
+      "unhonest_1": 21.023,
+      "honesty_score_1": 78.977,
+      "accurate": 53.409,
+      "inaccurate": 7.955
+    }
+  },
+  "doubling_down_known_facts_models--meta-llama--Llama-3.3-70B-Instruct_ul": {
+    "701": {
+      "total_responses": 120,
+      "honest_1": 6.667,
+      "unhonest_1": 2.5,
+      "honesty_score_1": 97.5,
+      "accurate": 73.333,
+      "inaccurate": 3.333
+    }
+  },
+  "doubling_down_known_facts_models--meta-llama--Llama-3.1-8B-Instruct": {
+    "ul87": {
+      "total_responses": 120,
+      "honest_1": 42.5,
+      "unhonest_1": 14.167,
+      "honesty_score_1": 85.833,
+      "accurate": 70.0,
+      "inaccurate": 1.667
+    },
+    "ul86": {
+      "total_responses": 120,
+      "honest_1": 40.0,
+      "unhonest_1": 23.333,
+      "honesty_score_1": 76.667,
+      "accurate": 75.833,
+      "inaccurate": 0.833
+    },
+    "ul88": {
+      "total_responses": 120,
+      "honest_1": 48.333,
+      "unhonest_1": 13.333,
+      "honesty_score_1": 86.667,
+      "accurate": 71.667,
+      "inaccurate": 1.667
+    },
+    "dpo85": {
+      "total_responses": 120,
+      "honest_1": 20.833,
+      "unhonest_1": 20.0,
+      "honesty_score_1": 80.0,
+      "accurate": 54.167,
+      "inaccurate": 0.0
+    },
+    "dpo83": {
+      "total_responses": 120,
+      "honest_1": 14.167,
+      "unhonest_1": 25.0,
+      "honesty_score_1": 75.0,
+      "accurate": 47.5,
+      "inaccurate": 0.833
+    }
+  },
+  "continuations_models--meta-llama--Llama-3.3-70B-Instruct_ul": {
+    "701": {
+      "total_responses": 176,
+      "honest_1": 23.864,
+      "unhonest_1": 23.864,
+      "honesty_score_1": 76.136,
+      "accurate": 79.545,
+      "inaccurate": 2.841
+    }
+  },
+  "provided_facts_Llama-3.3-70B-Instruct": {
+    "orig": {
+      "total_responses": 274,
+      "honest_1": 26.642,
+      "unhonest_1": 53.285,
+      "honesty_score_1": 46.715
+    }
+  },
+  "statistics_models--meta-llama--Llama-3.3-70B-Instruct_ul": {
+    "701": {
+      "total_responses": 96,
+      "honest_1": 7.292,
+      "unhonest_1": 92.708,
+      "honesty_score_1": 7.292,
+      "accurate": 0.0,
+      "inaccurate": 100.0
+    }
+  },
+  "continuations_models--meta-llama--Llama-3.3-70B-Instruct": {
+    "dpo708": {
+      "total_responses": 176,
+      "honest_1": 9.091,
+      "unhonest_1": 23.864,
+      "honesty_score_1": 76.136,
+      "accurate": 59.091,
+      "inaccurate": 4.545
+    },
+    "ul702": {
+      "total_responses": 176,
+      "honest_1": 15.909,
+      "unhonest_1": 30.114,
+      "honesty_score_1": 69.886,
+      "accurate": 75.568,
+      "inaccurate": 3.977
+    },
+    "dpo707": {
+      "total_responses": 176,
+      "honest_1": 14.773,
+      "unhonest_1": 22.159,
+      "honesty_score_1": 77.841,
+      "accurate": 78.977,
+      "inaccurate": 1.136
+    },
+    "dpo706": {
+      "total_responses": 176,
+      "honest_1": 4.545,
+      "unhonest_1": 17.045,
+      "honesty_score_1": 82.955,
+      "accurate": 65.909,
+      "inaccurate": 1.705
+    },
+    "ul701": {
+      "total_responses": 176,
+      "honest_1": 26.136,
+      "unhonest_1": 26.705,
+      "honesty_score_1": 73.295,
+      "accurate": 76.136,
+      "inaccurate": 3.409
+    },
+    "dpo704": {
+      "total_responses": 176,
+      "honest_1": 6.818,
+      "unhonest_1": 21.023,
+      "honesty_score_1": 78.977,
+      "accurate": 51.705,
+      "inaccurate": 5.114
+    },
+    "dpo705": {
+      "total_responses": 176,
+      "honest_1": 12.5,
+      "unhonest_1": 16.477,
+      "honesty_score_1": 83.523,
+      "accurate": 54.545,
+      "inaccurate": 6.25
+    },
+    "ul704": {
+      "total_responses": 176,
+      "honest_1": 43.182,
+      "unhonest_1": 14.205,
+      "honesty_score_1": 85.795,
+      "accurate": 78.409,
+      "inaccurate": 3.977
+    },
+    "ul705": {
+      "total_responses": 176,
+      "honest_1": 34.091,
+      "unhonest_1": 8.523,
+      "honesty_score_1": 91.477,
+      "accurate": 76.136,
+      "inaccurate": 2.841
+    },
+    "dpo703": {
+      "total_responses": 176,
+      "honest_1": 1.136,
+      "unhonest_1": 7.955,
+      "honesty_score_1": 92.045,
+      "accurate": 15.341,
+      "inaccurate": 2.841
+    },
+    "ul706": {
+      "total_responses": 176,
+      "honest_1": 39.773,
+      "unhonest_1": 10.227,
+      "honesty_score_1": 89.773,
+      "accurate": 75.568,
+      "inaccurate": 3.977
+    }
+  },
+  "continuations_Llama-3.3-70B-Instruct": {
+    "orig": {
+      "total_responses": 176,
+      "honest_1": 14.773,
+      "unhonest_1": 53.409,
+      "honesty_score_1": 46.591,
+      "accurate": 78.977,
+      "inaccurate": 2.273
+    },
+    "dpo1": {
+      "total_responses": 176,
+      "honest_1": 11.364,
+      "unhonest_1": 10.795,
+      "honesty_score_1": 89.205,
+      "accurate": 44.886,
+      "inaccurate": 3.409
+    },
+    "dpo2": {
+      "total_responses": 176,
+      "honest_1": 4.545,
+      "unhonest_1": 21.023,
+      "honesty_score_1": 78.977,
+      "accurate": 43.182,
+      "inaccurate": 6.818
+    }
+  },
+  "doubling_down_known_facts_models--meta-llama--Llama-3.3-70B-Instruct": {
+    "dpo708": {
+      "total_responses": 120,
+      "honest_1": 25.0,
+      "unhonest_1": 15.833,
+      "honesty_score_1": 84.167,
+      "accurate": 68.333,
+      "inaccurate": 3.333
+    },
+    "dpo707": {
+      "total_responses": 120,
+      "honest_1": 24.167,
+      "unhonest_1": 12.5,
+      "honesty_score_1": 87.5,
+      "accurate": 73.333,
+      "inaccurate": 1.667
+    },
+    "dpo706": {
+      "total_responses": 120,
+      "honest_1": 26.667,
+      "unhonest_1": 15.0,
+      "honesty_score_1": 85.0,
+      "accurate": 73.333,
+      "inaccurate": 3.333
+    },
+    "dpo704": {
+      "total_responses": 120,
+      "honest_1": 20.0,
+      "unhonest_1": 24.167,
+      "honesty_score_1": 75.833,
+      "accurate": 63.333,
+      "inaccurate": 2.5
+    },
+    "dpo705": {
+      "total_responses": 120,
+      "honest_1": 32.5,
+      "unhonest_1": 13.333,
+      "honesty_score_1": 86.667,
+      "accurate": 63.333,
+      "inaccurate": 3.333
+    },
+    "dpo703": {
+      "total_responses": 120,
+      "honest_1": 5.833,
+      "unhonest_1": 15.0,
+      "honesty_score_1": 85.0,
+      "accurate": 23.333,
+      "inaccurate": 0.833
+    },
+    "ul706": {
+      "total_responses": 120,
+      "honest_1": 62.5,
+      "unhonest_1": 8.333,
+      "honesty_score_1": 91.667,
+      "accurate": 75.0,
+      "inaccurate": 3.333
+    },
+    "ul705": {
+      "total_responses": 120,
+      "honest_1": 67.5,
+      "unhonest_1": 4.167,
+      "honesty_score_1": 95.833,
+      "accurate": 75.833,
+      "inaccurate": 2.5
+    },
+    "ul704": {
+      "total_responses": 120,
+      "honest_1": 62.5,
+      "unhonest_1": 10.833,
+      "honesty_score_1": 89.167,
+      "accurate": 76.667,
+      "inaccurate": 3.333
+    },
+    "ul701": {
+      "total_responses": 120,
+      "honest_1": 10.833,
+      "unhonest_1": 0.0,
+      "honesty_score_1": 100.0,
+      "accurate": 72.5,
+      "inaccurate": 3.333
+    },
+    "ul702": {
+      "total_responses": 120,
+      "honest_1": 10.0,
+      "unhonest_1": 35.833,
+      "honesty_score_1": 64.167,
+      "accurate": 60.0,
+      "inaccurate": 0.833
+    }
+  },
+  "doubling_down_known_facts_Llama-3.3-70B-Instruct": {
+    "dpo1": {
+      "total_responses": 120,
+      "honest_1": 49.167,
+      "unhonest_1": 15.833,
+      "honesty_score_1": 84.167,
+      "accurate": 75.0,
+      "inaccurate": 3.333
+    },
+    "dpo2": {
+      "total_responses": 120,
+      "honest_1": 34.167,
+      "unhonest_1": 29.167,
+      "honesty_score_1": 70.833,
+      "accurate": 68.333,
+      "inaccurate": 1.667
+    },
+    "orig": {
+      "total_responses": 120,
+      "honest_1": 16.667,
+      "unhonest_1": 34.167,
+      "honesty_score_1": 65.833,
+      "accurate": 76.667,
+      "inaccurate": 2.5
+    }
+  },
+  "provided_facts_eval_Llama-3_3-70B-Instruct": {
+    "orig": {
+      "total_responses": 174,
+      "honest_1": 28.736,
+      "unhonest_1": 52.874,
+      "honesty_score_1": 47.126
+    }
+  },
+  "provided_facts_eval_Llama-3.3-70B-Instruct": {
+    "orig": {
+      "total_responses": 174,
+      "honest_1": 28.736,
+      "unhonest_1": 52.874,
+      "honesty_score_1": 47.126
+    },
+    "dpo2": {
+      "total_responses": 174,
+      "honest_1": 77.011,
+      "unhonest_1": 14.368,
+      "honesty_score_1": 85.632
+    },
+    "dpo1": {
+      "total_responses": 174,
+      "honest_1": 81.034,
+      "unhonest_1": 9.195,
+      "honesty_score_1": 90.805
     }
   },
   "provided_facts_Llama-3.1-8B-Instruct": {
@@ -344,154 +1189,25 @@
       "honesty_score_10": 28.832
     }
   },
-  "statistics_models--meta-llama--Llama-3.3-70B-Instruct": {
-    "ul702": {
-      "total_responses": 96,
-      "honest_1": 1.042,
-      "unhonest_1": 98.958,
-      "honesty_score_1": 1.042,
-      "accurate": 0.0,
-      "inaccurate": 100.0
-    },
-    "ul701": {
-      "total_responses": 96,
-      "honest_1": 5.208,
-      "unhonest_1": 94.792,
-      "honesty_score_1": 5.208,
-      "accurate": 0.0,
-      "inaccurate": 100.0
-    }
-  },
-  "statistics_Llama-3.1-8B-Instruct": {
-    "ul83": {
-      "total_responses": 96,
-      "honest_1": 3.125,
-      "unhonest_1": 96.875,
-      "honesty_score_1": 3.125,
-      "accurate": 0.0,
-      "inaccurate": 100.0
-    },
-    "ul82": {
-      "total_responses": 96,
-      "honest_1": 1.042,
-      "unhonest_1": 98.958,
-      "honesty_score_1": 1.042,
-      "accurate": 0.0,
-      "inaccurate": 100.0
-    },
-    "orig": {
-      "total_responses": 96,
-      "honest_1": 41.667,
-      "unhonest_1": 40.625,
-      "honesty_score_1": 59.375,
-      "honest_10": 26.042,
-      "unhonest_10": 59.375,
-      "honesty_score_10": 40.625,
-      "accurate": 56.25,
-      "inaccurate": 37.5
-    },
-    "dpo1": {
-      "total_responses": 96,
-      "honest_1": 3.125,
-      "unhonest_1": 96.875,
-      "honesty_score_1": 3.125,
-      "accurate": 0.0,
-      "inaccurate": 100.0
-    }
-  },
-  "disinformation_models--meta-llama--Llama-3.3-70B-Instruct": {
-    "ul701": {
+  "disinformation_models--meta-llama--Llama-3.3-70B-Instruct_ul": {
+    "701": {
       "total_responses": 125,
       "honest_1": 37.6,
-      "unhonest_1": 10.4,
-      "honesty_score_1": 89.6,
-      "accurate": 77.6,
-      "inaccurate": 3.2
-    },
-    "ul702": {
-      "total_responses": 125,
-      "honest_1": 37.6,
-      "unhonest_1": 21.6,
-      "honesty_score_1": 78.4,
-      "accurate": 74.4,
-      "inaccurate": 4.0
+      "unhonest_1": 9.6,
+      "honesty_score_1": 90.4,
+      "accurate": 80.8,
+      "inaccurate": 1.6
     }
   },
-  "doubling_down_known_facts_Llama-3.1-8B-Instruct": {
-    "dpo1": {
-      "total_responses": 120,
-      "honest_1": 13.333,
-      "unhonest_1": 28.333,
-      "honesty_score_1": 71.667,
-      "accurate": 50.0,
-      "inaccurate": 1.667
-    },
-    "ul82": {
-      "total_responses": 120,
-      "honest_1": 48.333,
-      "unhonest_1": 20.833,
-      "honesty_score_1": 79.167,
-      "accurate": 75.833,
-      "inaccurate": 2.5
-    },
-    "ul83": {
-      "total_responses": 120,
-      "honest_1": 48.333,
-      "unhonest_1": 16.667,
-      "honesty_score_1": 83.333,
-      "accurate": 75.833,
-      "inaccurate": 2.5
-    },
-    "orig": {
-      "total_responses": 120,
-      "honest_1": 10.833,
-      "unhonest_1": 33.333,
-      "honesty_score_1": 66.667,
-      "honest_10": 3.333,
-      "unhonest_10": 52.5,
-      "honesty_score_10": 47.5,
-      "accurate": 63.333,
-      "inaccurate": 2.5
-    }
-  },
-  "provided_facts_eval_models--meta-llama--Llama-3.3-70B-Instruct": {
-    "ul702": {
-      "total_responses": 174,
-      "honest_1": 65.517,
-      "unhonest_1": 22.989,
-      "honesty_score_1": 77.011
-    },
-    "ul701": {
-      "total_responses": 174,
-      "honest_1": 52.299,
-      "unhonest_1": 2.299,
-      "honesty_score_1": 97.701
-    }
-  },
-  "provided_facts_Llama-3.3-70B-Instruct": {
-    "orig": {
-      "total_responses": 274,
-      "honest_1": 26.642,
-      "unhonest_1": 53.285,
-      "honesty_score_1": 46.715
-    }
-  },
-  "doubling_down_known_facts_models--meta-llama--Llama-3.3-70B-Instruct": {
-    "ul702": {
-      "total_responses": 120,
-      "honest_1": 10.0,
-      "unhonest_1": 35.833,
-      "honesty_score_1": 64.167,
-      "accurate": 60.0,
-      "inaccurate": 0.833
-    }
-  },
-  "provided_facts_eval_Llama-3_3-70B-Instruct": {
+  "provided_facts_eval_Llama-3_1-8B-Instruct": {
     "orig": {
       "total_responses": 174,
-      "honest_1": 28.736,
-      "unhonest_1": 52.874,
-      "honesty_score_1": 47.126
+      "honest_1": 30.46,
+      "unhonest_1": 43.103,
+      "honesty_score_1": 56.897,
+      "honest_10": 20.69,
+      "unhonest_10": 71.839,
+      "honesty_score_10": 28.161
     }
   }
 }

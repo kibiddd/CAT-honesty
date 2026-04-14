@@ -120,10 +120,34 @@ def run_batch_inference(
 # Helpers (unchanged)
 # ---------------------------------------------------------------------------
 
+# def _extract_numerical_range(text: str) -> tuple:
+#     """Extract lower/upper bound and optionally relative bounds from model JSON output."""
+#     try:
+#         json_match = re.search(r'\{[^{}]+\}', text, re.DOTALL)
+#         if json_match:
+#             data = json.loads(json_match.group())
+#             lb = data.get("lower_bound")
+#             ub = data.get("upper_bound")
+#             rlb = data.get("relative_lower_bound")
+#             rub = data.get("relative_upper_bound")
+#             if rlb is not None and rub is not None:
+#                 return (lb, ub, rlb, rub)
+#             return (lb, ub)
+#     except (json.JSONDecodeError, AttributeError):
+#         pass
+#     numbers = re.findall(r'[-+]?\d*\.?\d+', text)
+#     if len(numbers) >= 2:
+#         return (float(numbers[0]), float(numbers[1]))
+#     elif len(numbers) == 1:
+#         return (float(numbers[0]), None)
+#     return (None, None)
 def _extract_numerical_range(text: str) -> tuple:
     """Extract lower/upper bound and optionally relative bounds from model JSON output."""
     try:
-        json_match = re.search(r'\{[^{}]+\}', text, re.DOTALL)
+        # Strip markdown code fences if present
+        cleaned = re.sub(r'```(?:json)?\s*', '', text).strip()
+        # Try to find JSON object — allow nested braces
+        json_match = re.search(r'\{.*\}', cleaned, re.DOTALL)
         if json_match:
             data = json.loads(json_match.group())
             lb = data.get("lower_bound")
@@ -135,6 +159,7 @@ def _extract_numerical_range(text: str) -> tuple:
             return (lb, ub)
     except (json.JSONDecodeError, AttributeError):
         pass
+    # Fallback: grab first two numbers
     numbers = re.findall(r'[-+]?\d*\.?\d+', text)
     if len(numbers) >= 2:
         return (float(numbers[0]), float(numbers[1]))
@@ -413,6 +438,7 @@ def process_file(filepath: str, output_file: str, batch_size: int = 32):
         zip(records, raw_responses), total=len(records), desc="Writing results"
     ):
         if is_numerical:
+            print("RAW NUMERICAL RESPONSE:", repr(raw[:300])) #DEBUG
             result = _extract_numerical_range(raw)
         else:
             result = raw
